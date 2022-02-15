@@ -15,7 +15,7 @@ $ export FLASK_ENV=development
 Create and Configure Database (MySQL)
 DB Name  = flask_url_shorten2 (change as required)
 Edit line 9 in flask_shorty/__init__.py
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:''@localhost/flask_url_shorten2'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:''@localhost/flask_url_shorten2'
 
 Run app
 $ python run.py
