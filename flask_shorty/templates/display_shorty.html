@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container p-4 m-auto">
+
+{% with messages = get_flashed_messages(with_categories=true)  %}
+{% if messages %}
+{% for category, message in messages %}
+    <div class="alert alert-{{ category }} m-auto w-50 mt-3 mb-3 text-center">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="container p-3 m-auto w-50">
+        <h3>Here is your brand new shorty:</h3>
+        <a href="http://127.0.0.1:5000/{{ display_shorty }}" target="_blank" class="btn btn-outline-dark border-light p-2 rounded w-100 shadow"><strong>{{ display_shorty }}</strong></a>
+        <hr>
+        <a href="{{ url_for('home') }}" class="btn btn-primary border-light p-2 rounded w-100 shadow">Home</a>
+        <a href="{{ url_for('all_urls') }}" class="btn btn-info border-light mt-1 p-2 rounded w-100 shadow">Manage Shorties</a>
+    </div>
+</div>
+{% endblock %}

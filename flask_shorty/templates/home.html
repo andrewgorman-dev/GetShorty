@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+
+<!-- Expiry Messages -->
+<div class="container error-container m-auto w-50">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  {% for category, message in messages %}
+  <div class="alert alert-{{ category }} mt-3 text-center">
+    Warning! {{ message }}
+    <br>
+    <a href="{{ url_for('all_urls') }}" class="btn btn-outline-dark shadow-sm p-2">Manage Shorties Now</a>
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+</div>
+<div class="container">
+  <div class="row border rounded">
+    <div class="col-lg-7 col-md-6 col-sm-12 p-3">
+      <h3 class="text-start">Documentaion</h3>
+      <p>Welcome to Get Shorty!</p>
+      <p>Using our simple application you can generate shorter urls and save them with custom names.
+        Our (lovingly-named) shorties are live for exactly 3 days beginning the instant they are generated. If you
+        wish to
+        set shorter or longer expiry times please use the 'set custom expiry' form-field as instructed.</p>
+      <p id="notice"><strong>Please note: Once the shorties expire they will be deleted from our database to free-up
+          space
+          for future shorties. You will be notified of their expiry.</strong></p>
+      <a href="{{ url_for('generate') }}" class="btn btn-lg btn-outline-info p-2 rounded shadow-sm w-50">Create
+        New
+        Shorty</a>
+      <hr class="w-50 mt-4">
+      <a href="{{ url_for('all_urls') }}"
+        class="btn btn-lg btn-outline-dark mt-2 mb-4 p-2 border-light rounded shadow-sm w-50">Manage
+        Shorties</a>
+    </div>
+    <div class="col-lg-5 col-md-6 col-sm-12 border-start">
+      <!-- FIND ARECORD FORM -->
+      <div class="container form-container">
+        <form action="" method="POST" class="m-auto w-100">
+          {{ form.hidden_tag() }}
+          <fieldset class="form-group mt-1">
+            <legend>
+              <h4 class="pt-3 text-start">Retrieve a Shorty</h4>
+            </legend>
+            <div class="text-start">
+              <small class="text-danger">
+                <i>If shorty-links have already expired you will no longer be able to retrieve them</i>
+              </small>
+            </div>
+            <div class="form-group mt-3 m-auto">
+              {{ form.name.label (class="form-control-label") }}
+              {{ form.name (class="form-control") }}
+            </div>
+            <!-- Find Messages -->
+            {% if shorty %}
+            <div class="alert alert-success mt-2">
+              <p>Here you go: <i><u>"{{ shorty.name }}"</i></u></p>
+              <a class="btn btn-info p-2 border-light text-light rounded" href="{{ shorty.long }}"
+                target="_blank">http://127.0.0.1:5000/{{ shorty.short }}</a>
+              <br>
+              <small class="text-danger mt-1">
+                <i>This shorty currently set to expire on</i>
+              </small>
+              <p class="mt-1 text-danger"><strong>{{ shorty.expiry_time.strftime("%d %b %Y at %H:%M:%S") }}</strong></p>
+              <br>
+              <a href="{{ url_for('all_urls') }}" class="btn btn-outline-dark shadow-sm p-2">Manage Shorties Now</a>
+            </div>
+            {% elif not_shorty %}
+            <div class="alert alert-danger mt-2">
+              <p>{{ not_shorty }}</p>
+            </div>
+            {% else %}
+            <div></div>
+            {% endif %}
+
+          </fieldset>
+          <div class="form-group text-center mt-3 mb-3">
+            {{ form.submit (class="btn btn-outline-primary p-2 shadow-sm rounded mt-3 w-50 m-auto")}}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- --------------------------------------------------------------------------------------------- -->
+<!-- ALL RECORDS TABLE -->
+
+{% endblock %}

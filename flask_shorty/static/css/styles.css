@@ -1,0 +1,92 @@
+body {
+    background-color: rgba(212, 233, 253, 0.65);
+}
+
+@font-face {
+    font-family: ubu-r;
+    src: url("../font_ubu/Ubuntu-R.ttf");
+}
+
+@font-face {
+    font-family: ubu-ri;
+    src: url("../font_ubu/font_ubu/Ubuntu-RI.ttf");
+}
+
+@font-face {
+    font-family: ubu-l;
+    src: url("../font_ubu/font_ubu/Ubuntu-L.ttf");
+}
+
+@font-face {
+    font-family: ubu-m;
+    src: url("../font_ubu/font_ubu/Ubuntu-M.ttf");
+}
+
+.my-container {
+    width: 80vw;
+    margin: 2rem auto;
+    padding: 3em;
+    border: solid 1px grey;
+}
+
+h1, h3, h4, h5 {
+    font-family: ubu-r;
+    color: rgb(97, 97, 223);
+    text-shadow: -2px 2px 3px #858;
+}
+
+p {
+    font-family: ubu-r;
+}
+
+#notice {
+    color: rgb(243, 95, 95);
+}
+
+.banner {
+    margin-top: 4.2rem;
+    padding: 1.3rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items:center;
+}
+
+.banner-img-wrapper img {
+    margin-right: 1.6rem;
+    height: 5rem;
+    width: 5rem;
+    box-shadow: 2px 2px 3px #777, -2px -1px 2px #ccc;
+    border-radius: 50%;
+}
+
+.banner-img-wrapper img:hover {
+    box-shadow: 2px 2px 5px rgb(127, 224, 236), -2px -1px 5px #ccc;
+}
+
+.form-container, .find-container {
+    font-family: ubu-r;
+}
+
+.form-container legend {
+    font-family: ubu-m;
+}
+
+.form-input-bg {
+    background-image: linear-gradient(23.5deg, rgba(203, 217, 235, 0.7), rgba(101, 181, 206, 0.9) 100%);
+}
+
+.form-input-bg1 {
+    background-image: linear-gradient(23.5deg, rgba(203, 213, 235, 0.7), rgba(101, 134, 206, 0.9) 100%);
+}
+
+.form-input-bg2 {
+    background-image: linear-gradient(23.5deg, rgba(203, 235, 224, 0.7), rgba(101, 203, 206, 0.9) 100%);
+}
+
+
+.footer-container img {
+    margin-right: 1.6rem;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+}

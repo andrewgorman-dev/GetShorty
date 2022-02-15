@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<div class="container text-start mt-5 rounded p-4 form-container">
+    <form action="" method="POST" class="w-75 m-auto">
+        <!-- Add csrf token -->
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group pt-3">
+            <legend class="text-center">
+                <h3>
+                    <u>Update Shorty: <a href="{{ long }}" target="_blank" class="btn btn-outline-dark p-2 btn-lg shadow-sm">{{ legend }}</a></u>
+                </h3>
+            </legend>
+            <div class="form-group rounded p-4 form-input-bg1">
+                {{ form.name.label (class="form-control-label") }}
+                {{ form.name (class="form-control form-control") }}
+            </div>
+            <!-- Error Messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }} mt-3 mb-2">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <div class="form-group rounded p-4 form-input-bg2">
+                {{ form.expiry_time.label (class="form-control-label mt-3") }}
+                {{ form.expiry_time (class="form-control form-control", type='datetime', placeholder="Y-m-d HH:MM:SS")
+                }}
+            </div>
+
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit (class="btn btn-info border-light text-light rounded p-2 shadow mt-3 w-100 m-auto")}}
+            <hr>
+            <a href="{{ url_for('home') }}"
+                class="btn btn-outline-primary border-light rounded p-2 shadow mt-3 w-100">Home</a>
+            <a href="{{ url_for('all_urls') }}"
+                class="btn btn-outline-success border-light rounded p-2 shadow mt-3 w-100">Manage Shorties</a>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>{% block title %} {% endblock %}</title> 
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/play-icon-color-scaled.png') }}">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!-- Additional Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <!-- Title Text -->
+    <div class="container banner">
+        <div class="banner-img-wrapper">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='img/play-icon-color-scaled.png' ) }}" alt="logo">
+            </a>
+        </div>
+        <div class="banner-text">
+            <h1>Get Shorty!</h1>
+        </div>
+    </div>
+    {% block content %}
+
+    {% endblock %}
+
+    <hr class="mt-4">
+    <footer class="mt-5">
+        <div class="container footer-container text-center">
+            <div class="footer-img m-auto w-50">
+                <img src="{{ url_for('static', filename='img/play-icon-color-scaled.png' ) }}" alt="logo">
+                <img src="{{ url_for('static', filename='img/py-logo.png' ) }}" alt="logo">
+                <img src="{{ url_for('static', filename='img/maria-logo.png' ) }}" alt="logo">
+            </div>
+            <hr class="w-25 m-auto mt-3">
+            <div class="footer-text mt-3 m-auto w-50">
+                <h5>A simple app for shortening urls using Flask & MySQL</h5>
+                <p>Andrew Gorman &copy; 2022</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap js cdn -->
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+</body>
+
+</html>
